@@ -16,5 +16,13 @@ pipeline {
                 sh './jenkins/scripts/test.sh' 
             }
         }
+       stage('Deploy') {
+            steps {
+                sh './jenkins/scripts/deliver.sh'
+                sleep(time: 1, unit:'MINUTES')
+                sh  './jenkins/scripts/kill.sh'
+            }
+        }
+        
     }
 }
